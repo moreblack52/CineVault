@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CineVault — твоя персональна кінотека. Зберігай, оцінюй та ділись улюбленим кіно." />
+  <meta name="keywords" content="фільми, серіали, кінотека, колекція, CineVault" />
+  <meta name="author" content="CineVault" />
+  <title>CineVault — Твоя персональна кінотека</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       HEADER / НАВІГАЦІЯ
+  ════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <nav class="nav container" aria-label="Головна навігація">
+
+      <!-- Логотип -->
+      <a href="index.html" class="nav__logo" aria-label="CineVault — на головну">
+        <span class="nav__logo-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+            <line x1="7" y1="4" x2="7" y2="20" stroke="currentColor" stroke-width="2"/>
+            <line x1="17" y1="4" x2="17" y2="20" stroke="currentColor" stroke-width="2"/>
+            <line x1="2" y1="9" x2="7" y2="9" stroke="currentColor" stroke-width="2"/>
+            <line x1="17" y1="9" x2="22" y2="9" stroke="currentColor" stroke-width="2"/>
+            <line x1="2" y1="15" x2="7" y2="15" stroke="currentColor" stroke-width="2"/>
+            <line x1="17" y1="15" x2="22" y2="15" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </span>
+        <span class="nav__logo-text">CINE<span>VAULT</span></span>
+      </a>
+
+      <!-- Головне меню -->
+      <ul class="nav__menu" role="list">
+        <li><a href="index.html" class="nav__link nav__link--active" aria-current="page">Головна</a></li>
+        <li><a href="catalog.html" class="nav__link">Каталог</a></li>
+        <li><a href="series.html" class="nav__link">Серіали</a></li>
+        <li><a href="#genres" class="nav__link">Жанри</a></li>
+        <li><a href="community.html" class="nav__link">Спільнота</a></li>
+      </ul>
+
+      <!-- Пошук + кнопки -->
+      <div class="nav__actions">
+        <form class="nav__search" role="search" action="search.html" method="get">
+          <label for="search-input" class="visually-hidden">Пошук фільмів</label>
+          <span class="nav__search-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </span>
+          <input type="search" id="search-input" name="q" class="nav__search-input" placeholder="Пошук..." autocomplete="off" />
+        </form>
+        <a href="login.html" class="btn btn--outline btn--sm">Увійти</a>
+        <a href="register.html" class="btn btn--primary btn--sm">Реєстрація</a>
+      </div>
+
+      <!-- Мобільне меню -->
+      <button class="nav__burger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ═══════════════════════════════════════════════
+         HERO СЕКЦІЯ
+    ════════════════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__eyebrow">
+            <span class="hero__star" aria-hidden="true">★</span>
+            Рекомендовано для вас
+          </p>
+          <h1 class="hero__title" id="hero-title">
+            Твоя особиста<br />
+            <em>кінотека</em>
+          </h1>
+          <p class="hero__desc">
+            Зберігай улюблені фільми та серіали, ділись відгуками
+            та отримуй персональні рекомендації. Понад
+            <strong>500 000</strong> тайтлів українською.
+          </p>
+          <ul class="hero__features" role="list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Персональні списки перегляду
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Оцінки та відгуки
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Розумні рекомендації
+            </li>
+          </ul>
+          <div class="hero__btns">
+            <a href="catalog.html" class="btn btn--primary btn--lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Переглянути каталог
+            </a>
+            <a href="register.html" class="btn btn--outline btn--lg">Зареєструватись</a>
+          </div>
+        </div>
+
+        <!-- Постер -->
+        <aside class="hero__poster" aria-label="Фільм тижня">
+          <figure class="poster-card">
+            <div class="poster-card__img" role="img" aria-label="Постер фільму тижня">
+              <span class="poster-card__emoji" aria-hidden="true">🎬</span>
+              <span class="poster-card__badge">Топ тижня</span>
+              <span class="poster-card__rating" aria-label="Рейтинг 9.2">★ 9.2</span>
+            </div>
+            <figcaption class="poster-card__info">
+              <p class="poster-card__title">Фільм тижня</p>
+              <p class="poster-card__meta">Фільм · 2024 · США</p>
+            </figcaption>
+          </figure>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         ЖАНРИ
+    ════════════════════════════════════════════════ -->
+    <section class="genres" id="genres" aria-labelledby="genres-title">
+      <div class="container">
+        <h2 class="visually-hidden" id="genres-title">Жанри</h2>
+        <nav class="genre-nav" aria-label="Фільтр за жанрами">
+          <ul class="genre-nav__list" role="list">
+            <li><a href="catalog.html" class="genre-pill genre-pill--active" aria-current="true">Всі</a></li>
+            <li><a href="catalog.html?genre=action" class="genre-pill">Бойовик</a></li>
+            <li><a href="catalog.html?genre=comedy" class="genre-pill">Комедія</a></li>
+            <li><a href="catalog.html?genre=drama" class="genre-pill">Драма</a></li>
+            <li><a href="catalog.html?genre=horror" class="genre-pill">Жахи</a></li>
+            <li><a href="catalog.html?genre=scifi" class="genre-pill">Фантастика</a></li>
+            <li><a href="catalog.html?genre=anime" class="genre-pill">Аніме</a></li>
+            <li><a href="catalog.html?genre=documentary" class="genre-pill">Документальні</a></li>
+            <li><a href="catalog.html?genre=crime" class="genre-pill">Кримінал</a></li>
+            <li><a href="catalog.html?genre=thriller" class="genre-pill">Трилер</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         ПОПУЛЯРНЕ
+    ════════════════════════════════════════════════ -->
+    <section class="movies-section" aria-labelledby="popular-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-header__title" id="popular-title">
+            <span class="section-header__icon" aria-hidden="true">🔥</span>
+            Популярне <span>цього тижня</span>
+          </h2>
+          <a href="catalog.html?sort=popular" class="section-header__more">Всі →</a>
+        </header>
+
+        <ul class="movies-grid" role="list" aria-label="Популярні фільми цього тижня">
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=squid-game-2" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--1" role="img" aria-label="Постер: Гра в кальмара 2">
+                  <span class="movie-card__emoji" aria-hidden="true">🎭</span>
+                  <span class="movie-card__type">СЕРІАЛ</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 8.9">★ 8.9</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Гра в кальмара 2</h3>
+                  <p class="movie-card__year">2024</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn" aria-label="Додати до списку">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart" aria-label="Додати до улюблених">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=dune-2" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--2" role="img" aria-label="Постер: Дюна: Частина 2">
+                  <span class="movie-card__emoji" aria-hidden="true">⚔️</span>
+                  <span class="movie-card__type">ФІЛЬМ</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 8.5">★ 8.5</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Дюна: Частина 2</h3>
+                  <p class="movie-card__year">2024</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn" aria-label="Додати до списку">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart" aria-label="Додати до улюблених">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=oppenheimer" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--3" role="img" aria-label="Постер: Оппенгаймер">
+                  <span class="movie-card__emoji" aria-hidden="true">🔬</span>
+                  <span class="movie-card__type">ФІЛЬМ</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 8.9">★ 8.9</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Оппенгаймер</h3>
+                  <p class="movie-card__year">2023</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn" aria-label="Додати до списку">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart" aria-label="Додати до улюблених">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=the-office" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--4" role="img" aria-label="Постер: Офіс">
+                  <span class="movie-card__emoji" aria-hidden="true">👔</span>
+                  <span class="movie-card__type">СЕРІАЛ</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 9.0">★ 9.0</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Офіс (US)</h3>
+                  <p class="movie-card__year">2005</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn" aria-label="Додати до списку">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart" aria-label="Додати до улюблених">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=the-last-of-us" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--5" role="img" aria-label="Постер: Одні з нас">
+                  <span class="movie-card__emoji" aria-hidden="true">🧟</span>
+                  <span class="movie-card__type">СЕРІАЛ</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 8.8">★ 8.8</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Одні з нас</h3>
+                  <p class="movie-card__year">2023</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn" aria-label="Додати до списку">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart" aria-label="Додати до улюблених">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=true-detective" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--6" role="img" aria-label="Постер: Справжній детектив">
+                  <span class="movie-card__emoji" aria-hidden="true">🕵️</span>
+                  <span class="movie-card__type">СЕРІАЛ</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 9.0">★ 9.0</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Справжній детектив</h3>
+                  <p class="movie-card__year">2014</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn" aria-label="Додати до списку">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart" aria-label="Додати до улюблених">♥</button>
+              </div>
+            </article>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         ПРОМО-БАНЕР
+    ════════════════════════════════════════════════ -->
+    <section class="promo" aria-labelledby="promo-title">
+      <div class="container promo__inner">
+        <div class="promo__content">
+          <h2 class="promo__title" id="promo-title">Приєднуйся до спільноти кіноманів</h2>
+          <p class="promo__desc">Понад <strong>50 000</strong> користувачів вже ведуть свою кінотеку на CineVault. Реєстрація безкоштовна.</p>
+          <a href="register.html" class="btn btn--primary btn--lg">Створити акаунт безкоштовно</a>
+        </div>
+        <ul class="promo__stats" role="list">
+          <li class="promo__stat">
+            <strong class="promo__stat-val">500K+</strong>
+            <span class="promo__stat-lbl">Фільмів та серіалів</span>
+          </li>
+          <li class="promo__stat">
+            <strong class="promo__stat-val">50K+</strong>
+            <span class="promo__stat-lbl">Користувачів</span>
+          </li>
+          <li class="promo__stat">
+            <strong class="promo__stat-val">1M+</strong>
+            <span class="promo__stat-lbl">Відгуків</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         НОВІ НАДХОДЖЕННЯ
+    ════════════════════════════════════════════════ -->
+    <section class="movies-section movies-section--alt" aria-labelledby="new-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-header__title" id="new-title">
+            <span class="section-header__icon" aria-hidden="true">🆕</span>
+            Нові <span>надходження</span>
+          </h2>
+          <a href="catalog.html?sort=new" class="section-header__more">Всі →</a>
+        </header>
+
+        <ul class="movies-grid" role="list" aria-label="Нові фільми">
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=mufasa" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--7" role="img" aria-label="Постер: Муфаса">
+                  <span class="movie-card__emoji" aria-hidden="true">🦁</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 7.2">★ 7.2</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Муфаса</h3>
+                  <p class="movie-card__year">2024</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=moana-2" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--8" role="img" aria-label="Постер: Моана 2">
+                  <span class="movie-card__emoji" aria-hidden="true">🌊</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 7.0">★ 7.0</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Моана 2</h3>
+                  <p class="movie-card__year">2024</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=alien-romulus" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--9" role="img" aria-label="Постер: Alien Romulus">
+                  <span class="movie-card__emoji" aria-hidden="true">👽</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 7.4">★ 7.4</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Alien: Romulus</h3>
+                  <p class="movie-card__year">2024</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=deadpool-3" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--10" role="img" aria-label="Постер: Дедпул 3">
+                  <span class="movie-card__emoji" aria-hidden="true">⚡</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 8.0">★ 8.0</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Дедпул 3</h3>
+                  <p class="movie-card__year">2024</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=joker-2" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--11" role="img" aria-label="Постер: Джокер 2">
+                  <span class="movie-card__emoji" aria-hidden="true">🃏</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 5.8">★ 5.8</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Джокер 2</h3>
+                  <p class="movie-card__year">2024</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart">♥</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="movie-card">
+            <article>
+              <a href="movie.html?id=inside-out-2" class="movie-card__link">
+                <div class="movie-card__poster movie-card__poster--12" role="img" aria-label="Постер: Головоломка 2">
+                  <span class="movie-card__emoji" aria-hidden="true">🌈</span>
+                  <span class="movie-card__rating" aria-label="Рейтинг 7.8">★ 7.8</span>
+                </div>
+                <div class="movie-card__body">
+                  <h3 class="movie-card__title">Головоломка 2</h3>
+                  <p class="movie-card__year">2024</p>
+                </div>
+              </a>
+              <div class="movie-card__actions">
+                <button class="movie-card__btn">+ Список</button>
+                <button class="movie-card__btn movie-card__btn--heart">♥</button>
+              </div>
+            </article>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         ПЕРЕВАГИ
+    ════════════════════════════════════════════════ -->
+    <section class="features" aria-labelledby="features-title">
+      <div class="container">
+        <h2 class="features__title" id="features-title">Чому CineVault?</h2>
+        <ul class="features__grid" role="list">
+          <li class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">🇺🇦</div>
+            <h3 class="feature-card__title">Україномовний</h3>
+            <p class="feature-card__desc">Повністю україномовний інтерфейс та контент — для вас та вашої родини.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">📋</div>
+            <h3 class="feature-card__title">Особисті списки</h3>
+            <p class="feature-card__desc">«Переглянуто», «Хочу переглянути», «Улюблені» — повне керування колекцією.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">📊</div>
+            <h3 class="feature-card__title">Статистика</h3>
+            <p class="feature-card__desc">Скільки годин переглянуто, улюблені жанри, топ-режисери — знай свої вподобання.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">🏷️</div>
+            <h3 class="feature-card__title">Теги настрою</h3>
+            <p class="feature-card__desc">«Легка комедія», «Трилер», «Для родини» — знаходь потрібне за секунди.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer__inner">
+
+      <!-- Бренд -->
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo footer__logo" aria-label="CineVault">
+          <span class="nav__logo-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+              <line x1="7" y1="4" x2="7" y2="20" stroke="currentColor" stroke-width="2"/>
+              <line x1="17" y1="4" x2="17" y2="20" stroke="currentColor" stroke-width="2"/>
+              <line x1="2" y1="9" x2="7" y2="9" stroke="currentColor" stroke-width="2"/>
+              <line x1="17" y1="9" x2="22" y2="9" stroke="currentColor" stroke-width="2"/>
+              <line x1="2" y1="15" x2="7" y2="15" stroke="currentColor" stroke-width="2"/>
+              <line x1="17" y1="15" x2="22" y2="15" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </span>
+          <span class="nav__logo-text">CINE<span>VAULT</span></span>
+        </a>
+        <p class="footer__tagline">Твоя персональна кінотека. Зберігай, оцінюй та ділись улюбленим кіно.</p>
+      </div>
+
+      <!-- Навігація -->
+      <nav class="footer__nav" aria-label="Навігація футера">
+        <div class="footer__col">
+          <h3 class="footer__heading">Каталог</h3>
+          <ul role="list">
+            <li><a href="catalog.html">Фільми</a></li>
+            <li><a href="series.html">Серіали</a></li>
+            <li><a href="catalog.html?genre=anime">Аніме</a></li>
+            <li><a href="catalog.html?sort=new">Новинки</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Акаунт</h3>
+          <ul role="list">
+            <li><a href="register.html">Реєстрація</a></li>
+            <li><a href="login.html">Вхід</a></li>
+            <li><a href="profile.html">Мої списки</a></li>
+            <li><a href="profile.html?tab=settings">Налаштування</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Про нас</h3>
+          <ul role="list">
+            <li><a href="about.html">Про CineVault</a></li>
+            <li><a href="community.html">Спільнота</a></li>
+            <li><a href="terms.html">Умови використання</a></li>
+            <li><a href="privacy.html">Конфіденційність</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Контакти</h3>
+          <ul role="list">
+            <li><a href="mailto:info@cinevault.ua">info@cinevault.ua</a></li>
+            <li><a href="https://t.me/cinevault" rel="noopener noreferrer" target="_blank">Telegram</a></li>
+            <li><a href="https://instagram.com/cinevault" rel="noopener noreferrer" target="_blank">Instagram</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__copy">&copy; 2026 CineVault. Всі права захищені.</p>
+        <p class="footer__made">Зроблено з ♥ в Україні</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

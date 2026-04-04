@@ -1,0 +1,1056 @@
+/* ═══════════════════════════════════════════════════════
+   CINEVAULT — style.css
+   Автор: CineVault Project
+   Версія: 1.0
+════════════════════════════════════════════════════════ */
+
+/* ── 1. ДИЗАЙН-ТОКЕНИ (CSS ЗМІННІ) ──────────────────── */
+:root {
+  /* Кольори */
+  --color-bg:          #0D0D1A;
+  --color-bg-card:     #1A1A2E;
+  --color-bg-panel:    #16213E;
+  --color-accent:      #E5A817;
+  --color-accent-dark: #c98a00;
+  --color-teal:        #0AB3B8;
+  --color-red:         #C0392B;
+  --color-green:       #27AE60;
+  --color-white:       #FFFFFF;
+  --color-off-white:   #F0F0F0;
+  --color-muted:       #A0A0B0;
+  --color-border:      #2a3a5e;
+
+  /* Типографіка */
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body:    'Nunito Sans', system-ui, sans-serif;
+
+  /* Розміри */
+  --container-max: 1280px;
+  --container-pad: clamp(16px, 4vw, 64px);
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  20px;
+  --radius-pill: 100px;
+
+  /* Тіні */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.7);
+
+  /* Анімації */
+  --transition: 0.2s ease;
+  --transition-slow: 0.4s ease;
+}
+
+/* ── 2. RESET & BASE ─────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-off-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Прибираємо стилі списків у nav/footer */
+nav ul,
+footer ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ── 3. УТИЛІТИ ──────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* Доступний спосіб сховати візуально */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── 4. КНОПКИ ───────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  border-radius: var(--radius-md);
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition), transform var(--transition),
+              box-shadow var(--transition);
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Розміри */
+.btn--sm  { padding: 6px 16px;  font-size: 0.8rem; }
+.btn--md  { padding: 10px 22px; font-size: 0.88rem; }
+.btn--lg  { padding: 13px 30px; font-size: 0.95rem; }
+
+/* Варіанти */
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  box-shadow: 0 6px 20px rgba(229, 168, 23, 0.4);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn--outline:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ── 5. HEADER / НАВІГАЦІЯ ───────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 13, 26, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 64px;
+}
+
+/* Логотип */
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav__logo-icon {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--color-accent);
+}
+
+.nav__logo-text span {
+  color: var(--color-teal);
+}
+
+/* Меню */
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin-left: 16px;
+}
+
+.nav__link {
+  display: block;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition);
+  letter-spacing: 0.3px;
+}
+
+.nav__link:hover,
+.nav__link--active {
+  color: var(--color-white);
+}
+
+.nav__link--active {
+  background: rgba(229, 168, 23, 0.1);
+  color: var(--color-accent);
+}
+
+/* Дії (пошук + кнопки) */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.nav__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  transition: border-color var(--transition);
+}
+
+.nav__search:focus-within {
+  border-color: var(--color-accent);
+}
+
+.nav__search-icon {
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav__search-input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  width: 160px;
+}
+
+.nav__search-input::placeholder {
+  color: var(--color-muted);
+}
+
+/* Бургер (мобільний) */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  margin-left: auto;
+}
+
+.nav__burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition: transform var(--transition);
+}
+
+/* ── 6. HERO СЕКЦІЯ ──────────────────────────────────── */
+.hero {
+  position: relative;
+  padding-block: clamp(60px, 10vw, 100px);
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 70% 50%, rgba(22, 33, 62, 0.8) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 80% at 100% 50%, rgba(26, 26, 46, 0.6) 0%, transparent 60%),
+    linear-gradient(135deg, var(--color-bg) 40%, #1a1a3e 100%);
+  z-index: 0;
+}
+
+.hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(229, 168, 23, 0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 70%, rgba(10, 179, 184, 0.1) 0%, transparent 100%);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.hero__content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-teal);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.hero__star {
+  color: var(--color-accent);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin-bottom: 20px;
+}
+
+.hero__title em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+
+.hero__desc {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: 480px;
+}
+
+.hero__desc strong {
+  color: var(--color-off-white);
+}
+
+.hero__features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.hero__features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-off-white);
+}
+
+.hero__features svg {
+  color: var(--color-teal);
+  flex-shrink: 0;
+}
+
+.hero__btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Постер */
+.hero__poster {
+  flex-shrink: 0;
+}
+
+.poster-card {
+  width: 220px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  background: var(--color-bg-card);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.poster-card:hover {
+  transform: translateY(-6px) rotate(1deg);
+  box-shadow: var(--shadow-hover);
+}
+
+.poster-card__img {
+  height: 300px;
+  background: linear-gradient(135deg, #1a2040, #2a1a3e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  position: relative;
+}
+
+.poster-card__emoji {
+  pointer-events: none;
+}
+
+.poster-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+.poster-card__rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.poster-card__info {
+  padding: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.poster-card__title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 3px;
+}
+
+.poster-card__meta {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+}
+
+/* ── 7. ЖАНРИ ────────────────────────────────────────── */
+.genres {
+  padding-block: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.genre-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.genre-pill {
+  display: inline-block;
+  padding: 7px 18px;
+  background: var(--color-bg-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition), transform var(--transition);
+}
+
+.genre-pill:hover {
+  background: rgba(229, 168, 23, 0.15);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.genre-pill--active {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+  font-weight: 700;
+}
+
+.genre-pill--active:hover {
+  background: var(--color-accent-dark);
+  color: var(--color-bg);
+}
+
+/* ── 8. СЕКЦІЇ З ФІЛЬМАМИ ────────────────────────────── */
+.movies-section {
+  padding-block: 48px;
+}
+
+.movies-section--alt {
+  background: rgba(22, 33, 62, 0.2);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.section-header__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-header__title span {
+  color: var(--color-accent);
+}
+
+.section-header__icon {
+  font-size: 1.2rem;
+}
+
+.section-header__more {
+  color: var(--color-teal);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: color var(--transition), gap var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.section-header__more:hover {
+  color: var(--color-accent);
+}
+
+/* ── 9. КАРТКИ ФІЛЬМІВ ───────────────────────────────── */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  list-style: none;
+}
+
+.movie-card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition),
+              box-shadow var(--transition);
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.movie-card__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.movie-card__poster {
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Унікальні кольори для постерів */
+.movie-card__poster--1  { background: linear-gradient(135deg, #1a3040, #2a1020); }
+.movie-card__poster--2  { background: linear-gradient(135deg, #2a1a10, #1a1040); }
+.movie-card__poster--3  { background: linear-gradient(135deg, #1a1a30, #30101a); }
+.movie-card__poster--4  { background: linear-gradient(135deg, #1a2a10, #102a20); }
+.movie-card__poster--5  { background: linear-gradient(135deg, #201a10, #102010); }
+.movie-card__poster--6  { background: linear-gradient(135deg, #10201a, #1a1020); }
+.movie-card__poster--7  { background: linear-gradient(135deg, #2a1810, #1a1208); }
+.movie-card__poster--8  { background: linear-gradient(135deg, #08182a, #0a1020); }
+.movie-card__poster--9  { background: linear-gradient(135deg, #0a0a20, #08080a); }
+.movie-card__poster--10 { background: linear-gradient(135deg, #2a0808, #1a0808); }
+.movie-card__poster--11 { background: linear-gradient(135deg, #201a08, #181008); }
+.movie-card__poster--12 { background: linear-gradient(135deg, #081828, #102030); }
+
+.movie-card__emoji {
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+
+.movie-card__type {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(229, 168, 23, 0.9);
+  color: var(--color-bg);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+.movie-card__rating {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--color-accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+}
+
+.movie-card__body {
+  padding: 10px 12px 8px;
+}
+
+.movie-card__title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-card__year {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+}
+
+.movie-card__actions {
+  display: flex;
+  gap: 6px;
+  padding: 0 12px 10px;
+}
+
+.movie-card__btn {
+  flex: 1;
+  background: var(--color-bg-panel);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: border-color var(--transition), color var(--transition),
+              background var(--transition);
+}
+
+.movie-card__btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(229, 168, 23, 0.08);
+}
+
+.movie-card__btn--heart {
+  flex: 0 0 auto;
+  width: 34px;
+  padding-inline: 0;
+}
+
+.movie-card__btn--heart:hover {
+  border-color: var(--color-red);
+  color: var(--color-red);
+  background: rgba(192, 57, 43, 0.08);
+}
+
+/* ── 10. ПРОМО-БАНЕР ─────────────────────────────────── */
+.promo {
+  background: linear-gradient(135deg, var(--color-bg-panel) 0%, #0d1830 100%);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: 56px;
+}
+
+.promo__inner {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.promo__content {
+  flex: 1;
+}
+
+.promo__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.promo__desc {
+  color: var(--color-muted);
+  font-size: 1rem;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.promo__desc strong {
+  color: var(--color-accent);
+}
+
+.promo__stats {
+  display: flex;
+  gap: 40px;
+  flex-shrink: 0;
+  list-style: none;
+}
+
+.promo__stat {
+  text-align: center;
+}
+
+.promo__stat-val {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.promo__stat-lbl {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  letter-spacing: 0.5px;
+}
+
+/* ── 11. ПЕРЕВАГИ ────────────────────────────────────── */
+.features {
+  padding-block: 72px;
+}
+
+.features__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+  color: var(--color-white);
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 48px;
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  list-style: none;
+}
+
+.feature-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform var(--transition), border-color var(--transition),
+              box-shadow var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-teal);
+  box-shadow: 0 8px 32px rgba(10, 179, 184, 0.15);
+}
+
+.feature-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.feature-card__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.feature-card__desc {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+/* ── 12. FOOTER ──────────────────────────────────────── */
+.site-footer {
+  background: #080810;
+  border-top: 1px solid var(--color-border);
+  padding-top: 56px;
+}
+
+.footer__inner {
+  display: flex;
+  gap: 64px;
+  padding-bottom: 48px;
+}
+
+.footer__brand {
+  flex: 0 0 220px;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.footer__tagline {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.footer__nav {
+  flex: 1;
+  display: flex;
+  gap: 40px;
+}
+
+.footer__col h3,
+.footer__heading {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.footer__col a {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  transition: color var(--transition);
+}
+
+.footer__col a:hover {
+  color: var(--color-accent);
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--color-border);
+  padding-block: 20px;
+}
+
+.footer__bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__copy,
+.footer__made {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.footer__made {
+  color: var(--color-border);
+}
+
+/* ── 13. АНІМАЦІЇ ────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__content {
+  animation: fadeInUp 0.7s ease both;
+}
+
+.hero__poster {
+  animation: fadeInUp 0.7s ease 0.15s both;
+}
+
+.movie-card {
+  animation: fadeInUp 0.5s ease both;
+}
+
+/* Затримки для стаггеру карток */
+.movies-grid li:nth-child(1) { animation-delay: 0.05s; }
+.movies-grid li:nth-child(2) { animation-delay: 0.10s; }
+.movies-grid li:nth-child(3) { animation-delay: 0.15s; }
+.movies-grid li:nth-child(4) { animation-delay: 0.20s; }
+.movies-grid li:nth-child(5) { animation-delay: 0.25s; }
+.movies-grid li:nth-child(6) { animation-delay: 0.30s; }
+
+/* ── 14. АДАПТИВНІСТЬ ────────────────────────────────── */
+@media (max-width: 1100px) {
+  .movies-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer__inner {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  .hero__features {
+    align-items: center;
+  }
+  .hero__btns {
+    justify-content: center;
+  }
+  .hero__poster {
+    order: -1;
+  }
+  .promo__inner {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  .promo__stats {
+    justify-content: center;
+  }
+  .movies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Навігація */
+  .nav__menu,
+  .nav__actions .btn {
+    display: none;
+  }
+  .nav__burger {
+    display: flex;
+  }
+  .nav__actions {
+    gap: 8px;
+  }
+  .nav__search {
+    display: none;
+  }
+
+  /* Сітки */
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
+  .footer__nav {
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .footer__bottom-inner {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .movie-card__poster {
+    height: 180px;
+    font-size: 2rem;
+  }
+  .promo__stats {
+    gap: 24px;
+  }
+  .genre-nav__list {
+    gap: 6px;
+  }
+}
