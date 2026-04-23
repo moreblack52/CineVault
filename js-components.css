@@ -1,0 +1,178 @@
+
+/* ═══════════════════════════════════════════════════════
+   JS-КОМПОНЕНТИ (додано в ЛР JavaScript)
+════════════════════════════════════════════════════════ */
+
+/* ── Toast повідомлення ──────────────────────────────── */
+.cv-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-off-white);
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: var(--shadow-hover);
+  white-space: nowrap;
+}
+.cv-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.cv-toast--success { border-color: var(--color-green); }
+.cv-toast--success .cv-toast__icon { color: var(--color-green); }
+.cv-toast--error   { border-color: var(--color-red); }
+.cv-toast--error   .cv-toast__icon { color: var(--color-red); }
+.cv-toast--info    { border-color: var(--color-teal); }
+.cv-toast--info    .cv-toast__icon { color: var(--color-teal); }
+.cv-toast__icon    { font-size: 1rem; flex-shrink: 0; }
+
+/* ── Лічильник у навігації ───────────────────────────── */
+.cv-counter {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  display: none;
+  align-items: center;
+}
+
+/* ── Пошуковий dropdown ──────────────────────────────── */
+.cv-search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hover);
+  z-index: 200;
+  overflow: hidden;
+  min-width: 280px;
+}
+.cv-search-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: var(--color-off-white);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition);
+  gap: 12px;
+}
+.cv-search-item:last-child { border-bottom: none; }
+.cv-search-item:hover { background: var(--color-bg-panel); }
+.cv-search-item__title { flex: 1; font-weight: 600; }
+.cv-search-item__meta  { font-size: 0.72rem; color: var(--color-muted); white-space: nowrap; }
+.cv-search-item mark {
+  background: rgba(224, 48, 48, 0.25);
+  color: var(--color-accent);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* ── Статистика у футері ─────────────────────────────── */
+.cv-stats {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+.cv-stats__title {
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.cv-stats__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cv-stats__list li { font-size: 0.75rem; color: var(--color-muted); }
+.cv-stats__list strong { color: var(--color-off-white); }
+
+/* ── Кнопка "нагору" ─────────────────────────────────── */
+.cv-back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 500;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+  box-shadow: 0 4px 16px rgba(224, 48, 48, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cv-back-to-top--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cv-back-to-top:hover {
+  background: var(--color-accent-dark);
+  transform: translateY(-2px);
+}
+
+/* ── Анімації появи секцій ───────────────────────────── */
+.cv-fade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.cv-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Активна кнопка картки ───────────────────────────── */
+.movie-card__btn--active {
+  border-color: var(--color-green) !important;
+  color: var(--color-green) !important;
+  background: rgba(39, 174, 96, 0.1) !important;
+}
+
+/* ── Мобільне меню (відкритий стан) ──────────────────── */
+@media (max-width: 768px) {
+  .nav__menu--open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(13, 10, 10, 0.98);
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px var(--container-pad);
+    gap: 4px;
+    backdrop-filter: blur(12px);
+  }
+  .nav__burger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav__burger--open span:nth-child(2) { opacity: 0; }
+  .nav__burger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
